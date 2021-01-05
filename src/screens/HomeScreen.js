@@ -7,6 +7,10 @@ const HomeScreen = ({navigation}) => {
   return (
     <View>
       <Text style={styles.text}>Dashboard</Text>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Food')}>
+        <Text style={styles.textTouchableOpacity}>Food Scan</Text>
+      </TouchableOpacity>
       <TouchableOpacity 
           onPress={() => navigation.navigate('Image')}>
         <Text style={styles.textTouchableOpacity}>Workout</Text>
