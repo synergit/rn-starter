@@ -7,6 +7,7 @@ import ImageScreen from './src/screens/ImageScreen';
 import CounterScreen from './src/screens/CounterScreen';
 import FoodScanScreen from './src/screens/FoodScanScreen';
 import ColorScreen from './src/screens/ColorScreen';
+import SquareScreen from './src/screens/SqaureScreen';
 
 
 const navigator = createStackNavigator(
@@ -17,7 +18,8 @@ const navigator = createStackNavigator(
     Image: ImageScreen,
     Counter: CounterScreen,
     Food: FoodScanScreen, 
-    Color: ColorScreen
+    Color: ColorScreen,
+    Square: SquareScreen
   },
   {
     initialRouteName: 'Home',
