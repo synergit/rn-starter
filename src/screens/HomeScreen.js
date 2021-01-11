@@ -7,10 +7,10 @@ const HomeScreen = ({navigation}) => {
   return (
     <View>
       <Text style={styles.text}>Dashboard</Text>
-      <TouchableOpacity
+      {/* <TouchableOpacity
         onPress={() => navigation.navigate('Food')}>
         <Text style={styles.textTouchableOpacity}>Food Scan</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
       <TouchableOpacity 
           onPress={() => navigation.navigate('Image')}>
         <Text style={styles.textTouchableOpacity}>Workout</Text>
@@ -26,6 +26,10 @@ const HomeScreen = ({navigation}) => {
       <TouchableOpacity 
           onPress={() => navigation.navigate('Counter')}>
         <Text style={styles.textTouchableOpacity}>Records</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Color')}>
+        <Text style={styles.textTouchableOpacity}>Color Fun</Text>
       </TouchableOpacity>
     </View>
   );
