@@ -1,53 +1,58 @@
-import React, {useState} from 'react';
+import React, { useReducer} from 'react';
 import { StyleSheet, View, Button, FlatList, Text, InteractionManager } from 'react-native';
 import ColorCounter from '../components/ColorCounter';
 
-const COLOR_INCREMENT = 50
+const COLOR_INCREMENT = 50;
 
 const SquareScreen = () =>{
-    // console.log(colors);
-    const [red, setRed] = useState(0);
-    const [green, setGreen] = useState(0);
-    const [blue, setBlue] = useState(0);
-    
     const inRange = (value, max, min) => {
         return (value <= max) && (value >= min)
     }
-    console.log(red, green, blue)
-
-    const setColor = (color, change) => {
-        // color === 'red', 'green', 'blue'
-        switch(color){
-            case 'red':       
-                inRange(red+change, 255, 0) ? setRed(red+change) : null
-                break;
-            case 'green':
-                inRange(green+change, 255, 0) ? setGreen(green+change) : null
-                break;
-            case 'blue':
-                inRange(blue+change, 255, 0) ? setBlue(blue+change) : null
-                break;
+    //  action: how to change `state` object
+    const reducer = (state, action) => {
+        // state === {red: #, green: #, blue: #}
+        // action === {type: 'change_red', or 'change_green' or 'change_blue', payload: 15 || -15}
+        switch(action.type){
+            case 'change_red':
+                return inRange(state.red + action.payload, 255, 0) 
+                ? {...state, red: state.red + action.payload}
+                : state;
+            case 'change_green':
+                return inRange(state.green + action.payload, 255, 0) 
+                ? {...state, green: state.green + action.payload}
+                : state;
+            case 'change_blue':
+                return inRange(state.blue + action.payload, 255, 0) 
+                ? {...state, blue: state.blue + action.payload}
+                : state;
             default:
-                console.error("not expected color:" + color)
-        }
-    }
+                console.error("unexpected color")
+                return state;
+        };
+    };
+
+
+    const [state, dispatch] = useReducer(reducer, {red: 0, green: 0, blue: 0});
+    const {red, green, blue} = state;
+    console.log(state)
+    
     return (
         <View>
             <ColorCounter 
-                onIncrease={()=>setColor('red', COLOR_INCREMENT)} 
-                onDecrease={()=>setColor('red', -COLOR_INCREMENT)} 
+                onIncrease={()=>dispatch({type: 'change_red', payload: COLOR_INCREMENT})} 
+                onDecrease={()=>dispatch({type: 'change_red', payload: -COLOR_INCREMENT})} 
                 color="Red"/>
             <ColorCounter 
-                onIncrease={()=>setColor('green', COLOR_INCREMENT)} 
-                onDecrease={()=>setColor('green', -COLOR_INCREMENT)} 
+                onIncrease={()=>dispatch({type: 'change_green', payload: COLOR_INCREMENT})}  
+                onDecrease={()=>dispatch({type: 'change_green', payload: -COLOR_INCREMENT})}  
                 color="Green"/>
             <ColorCounter 
-                onIncrease={()=>setColor('blue', COLOR_INCREMENT)} 
-                onDecrease={()=>setColor('blue', -COLOR_INCREMENT)} 
+                onIncrease={()=>dispatch({type: 'change_blue', payload: COLOR_INCREMENT})} 
+                onDecrease={()=>dispatch({type: 'change_blue', payload: -COLOR_INCREMENT})}
                 color="Blue"/>
             <View 
-                style={{height:200, width: 200, backgroundColor: 
-                `rgb(${red}, ${green}, ${blue})`}}
+                style={{height:200, width: 200, 
+                backgroundColor: `rgb(${red}, ${green}, ${blue})`}}
             />
         </View>
     );
