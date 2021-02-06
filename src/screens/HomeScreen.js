@@ -12,6 +12,10 @@ const HomeScreen = ({navigation}) => {
         <Text style={styles.textTouchableOpacity}>Food Scan</Text>
       </TouchableOpacity> */}
       <TouchableOpacity 
+          onPress={() => navigation.navigate('Survey')}>
+        <Text style={styles.textTouchableOpacity}>Survey</Text>
+      </TouchableOpacity>
+      <TouchableOpacity 
           onPress={() => navigation.navigate('Image')}>
         <Text style={styles.textTouchableOpacity}>Workout</Text>
       </TouchableOpacity>
