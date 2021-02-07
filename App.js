@@ -9,6 +9,7 @@ import FoodScanScreen from './src/screens/FoodScanScreen';
 import ColorScreen from './src/screens/ColorScreen';
 import SquareScreen from './src/screens/SqaureScreen';
 import SurveyScreen from './src/screens/SurveyScreen';
+import BoxScreen from './src/screens/BoxScreen';
 
 
 const navigator = createStackNavigator(
@@ -21,7 +22,8 @@ const navigator = createStackNavigator(
     Food: FoodScanScreen, 
     Color: ColorScreen,
     Square: SquareScreen,
-    Survey: SurveyScreen
+    Survey: SurveyScreen, 
+    Box: BoxScreen,
   },
   {
     initialRouteName: 'Home',

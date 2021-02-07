@@ -5,7 +5,7 @@ const HomeScreen = ({navigation}) => {
   // console.log(props.navigation);
 
   return (
-    <View>
+    <View style={styles.viewStyle}>
       <Text style={styles.text}>Dashboard</Text>
       {/* <TouchableOpacity
         onPress={() => navigation.navigate('Food')}>
@@ -39,14 +39,21 @@ const HomeScreen = ({navigation}) => {
         onPress={() => navigation.navigate('Square')}>
         <Text style={styles.textTouchableOpacity}>Square Color</Text>
       </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Box')}>
+        <Text style={styles.textTouchableOpacity}>Box</Text>
+      </TouchableOpacity>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  viewStyle: {
+    alignItems: "center",
+  },
   text: {
     fontSize: 30,
-    fontWeight: "bold"
+    fontWeight: "bold",
   },
   textTouchableOpacity: {
     fontSize: 25,
