@@ -3,11 +3,11 @@ import { Text, StyleSheet, View, FlatList } from 'react-native';
 
 const ListScreen = () => {
     const friends = [
-        {name: 'Sophia', age: 10},
-        {name: 'Sarah', age: 6},
-        {name: 'Chloe', age: 20},
-        {name: 'Ashley', age: 11},
-        {name: 'Angela', age: 9}
+        {name: 'Sophia', age: 10, workout: 'Tennis', calory: '315 cal'},
+        {name: 'Sarah', age: 6, workout: 'Dance', calory: '108 cal'},
+        {name: 'Chloe', age: 20, workout: 'Outdoor run', calory: '222 cal'},
+        {name: 'Ashley', age: 11, workout: 'Pool Swim', calory: '305 cal'},
+        {name: 'Angela', age: 9, workout: 'Jump Rope', calory: '287 cal'},
     ];
 
     // const friends = [
@@ -23,8 +23,7 @@ const ListScreen = () => {
             keyExtractor={friends => friends.name} 
             data={friends} 
             renderItem={({item}) => {
-                // item === {name: ""},
-                return <Text style={styles.textStyle}>{item.name} - Age {item.age}</Text>;
+                return <Text style={styles.textStyle}>{item.name} - Age {item.age} - {item.workout}, {item.calory}</Text>;
             }}  
         />
     );
